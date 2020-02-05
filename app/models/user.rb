@@ -9,5 +9,5 @@ class User < ApplicationRecord
 
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
   validates :name, length: {maximum: 20, minimum: 2}
-  validates :introduction, presence: true
+  validates :introduction, length: { maximum: 50 }  
 end
