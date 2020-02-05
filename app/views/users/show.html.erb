@@ -18,7 +18,7 @@
 	</thead>
 
 	<tbody>
-		<% books.each do |book| %>
+		<% @books.each do |book| %>
 		<tr>
 			<td>
 				<%= link_to (book.user) do %>
@@ -32,4 +32,3 @@
 	</tbody>
 </table>
 <!--books一覧 -->
-
