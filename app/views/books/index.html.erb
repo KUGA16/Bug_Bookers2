@@ -19,7 +19,7 @@
 					<th></th>
 					<th>Title</th>
 					<th>Opinion</th>
-					<th colspan="4"></th>
+					<th colspan="5"></th>
 				</tr>
 			</thead>
 
@@ -35,6 +35,10 @@
 					<td><%= books.body %></td>
 					<!-- いいね機能 -->
 					<td><%= render 'favorites/hart', book: books %></td>
+					<!--コメント件数 -->
+					<td>
+						<h4 class="comment-count"><%= book.book_comments.count %>件コメント</h4>
+					</td>
 				</tr>
 				<% end %>
 
