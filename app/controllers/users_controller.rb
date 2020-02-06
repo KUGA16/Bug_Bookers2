@@ -34,7 +34,8 @@ class UsersController < ApplicationController
 
   #url直接防止　メソッドを自己定義してbefore_actionで発動。
    def baria_user
-  	unless params[:id].to_i == current_user.id
+			 user = User.find(params[:id])
+  	unless user.id == current_user.id
   		redirect_to user_path(current_user)
   	end
    end

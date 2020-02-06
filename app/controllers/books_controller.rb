@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :baria_user, only: [:edit, :update]
+  before_action :baria_user, only: [:edit, :update, :delete]
 
   def show
     @new_book = Book.new
@@ -52,7 +52,8 @@ class BooksController < ApplicationController
 
   #url直接防止　メソッドを自己定義してbefore_actionで発動。
    def baria_user
-  	unless params[:id].to_i == current_user.id
+     book = Book.find(params[:id])
+  	unless book.user.id == current_user.id
   		redirect_to user_path(current_user)
   	end
    end
