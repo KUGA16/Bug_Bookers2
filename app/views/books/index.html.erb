@@ -36,9 +36,7 @@
 					<!-- いいね機能 -->
 					<td><%= render 'favorites/hart', book: books %></td>
 					<!--コメント件数 -->
-					<td>
-						<h4 class="comment-count"><%= book.book_comments.count %>件コメント</h4>
-					</td>
+					<td>コメント数：<%= books.book_comments.count %></td>
 				</tr>
 				<% end %>
 
