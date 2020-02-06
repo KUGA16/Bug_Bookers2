@@ -1,6 +1,12 @@
 class Book < ApplicationRecord
 	belongs_to :user, optional: true
 	has_many :favorites, dependent: :destroy
+
+	# 存在していればtrue、存在していなければfalseを返す
+	def favorited_by?(user)
+		favorites.where(user_id: user.id).exists?
+	end
+
 	#バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
 	#presence trueは空欄の場合を意味する。
 	validates :title, presence: true
