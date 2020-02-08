@@ -4,7 +4,8 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!-- フォントオウサム cssよりも前に書く事！ -->
+    <script src="https://kit.fontawesome.com/befbebc5ef.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -37,14 +38,12 @@
       </div>
     </header>
     <!--ヘッダーの記述-->
-    <div class="container">
-      <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
-
-      <main>
-          <%= yield %>
-      </main>
-
-    </div>
-
+    <main>
+      <div class="container">
+        <!--デバイスでnotice設定されているので呼び出してるだけ-->
+        <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
