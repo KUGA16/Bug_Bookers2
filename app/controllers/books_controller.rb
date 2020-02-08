@@ -4,9 +4,9 @@ class BooksController < ApplicationController
   before_action :baria_user, only: [:edit, :update, :delete]
 
   def show
-    @new_book = Book.new
   	@book = Book.find(params[:id])
     @user = @book.user
+    @new_book = Book.new
     @book_comment = BookComment.new
   end
 
