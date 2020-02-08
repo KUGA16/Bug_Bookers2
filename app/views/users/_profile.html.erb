@@ -10,7 +10,29 @@
 			<th>introduction</th>
 			<th><%= user.introduction %></th>
 		</tr>
+
+		<tr>
+			<th>follows</th>
+			<th>フォローしてる数</th>
+		</tr>
+
+		<tr>
+			<th>followers</th>
+			<th>フォローされてる数</th>
+		</tr>
 </table>
+
+<!-- 今ログインしているユーザーじゃない場合 -->
+<% if current_user != user %>
+<!-- このユーザーは自分（ログインしているユーザー)がフォローしてないユーザーか確かめる -->
+  <% if user.followed_by?(current_user) %>
+	<!-- ture = フォローしている なら外すボタン -->
+    <p><%=link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-warning" %></p>
+  <% else %>
+	<!--false = フォローしていない　ならフォローするボタン-->
+    <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %></p>
+	<% end %>
+<% end %>
 
 <div class="row">
 	<%= link_to '',edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
