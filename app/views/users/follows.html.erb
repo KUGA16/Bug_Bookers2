@@ -1,0 +1,40 @@
+<!-- フォロー一覧画面 -->
+<div class="row">
+  <h2>Follow Users</h2>
+
+  <table class="table">
+	  <thead>
+		  <tr>
+			  <th>image</th>
+			  <th>name</th>
+			  <th colspan="4"></th>
+		  </tr>
+	  </thead>
+
+    <tbody>
+		  <% @users.each do |user| %>
+		  <tr>
+			  <td><%= attachment_image_tag(user, :profile_image, :fill, 34, 34, fallback: "no-image-mini.jpg") %></td>
+			  <td><%= user.name%></td>
+			  <td>フォロー数：<%= user.followings.count %></td>
+			  <td>フォロワー数：<%= user.followers.count %></td>
+			<!-- 今ログインしているユーザーじゃない場合 -->
+			  <% if current_user != user %>
+			<!-- このユーザーは自分（ログインしているユーザー)がフォローしてないユーザーか確かめる -->
+				  <% if user.followed_by?(current_user) %>
+				<!-- ture = フォローしている なら外すボタン -->
+			  	  <td><%=link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-warning" %></td>
+				  <% else %>
+				<!--false = フォローしていない　ならフォローするボタン-->
+			  	  <td><%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %></td>
+				  <% end %>
+			  <% else %>
+				  <td><%= link_to "あなたです！", user_path(current_user), class: "btn btn-info" %></td>
+			  <% end %>
+
+			    <td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
+		   </tr>
+		   <% end %>
+	  </tbody>
+  </table>
+</div>
