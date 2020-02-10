@@ -38,6 +38,17 @@
       </div>
     </header>
     <!--ヘッダーの記述-->
+    <!-- 検索フォーム -->
+    <div class="container text-center">
+      <% if user_signed_in? %>
+        <%= form_tag(search_index_path, :method => 'get') do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag '検索', :name => nil %>
+        <% end %>
+      <% end %>
+    </div>
+    <!-- 検索フォームの記述 -->
+    
     <main>
       <div class="container">
         <!--デバイスでnotice設定されているので呼び出してるだけ-->
