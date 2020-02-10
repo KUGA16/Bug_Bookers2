@@ -38,17 +38,20 @@
       </div>
     </header>
     <!--ヘッダーの記述-->
+
     <!-- 検索フォーム -->
     <div class="container text-center">
       <% if user_signed_in? %>
-        <%= form_tag(search_index_path, :method => 'get') do %>
-          <%= text_field_tag :search %>
+        <%= form_tag(search_search_path, method: :get) do %>
+          <%= text_field_tag :search_word %>
+          <%= select_tag 'subject', options_for_select([["User", 1],["Book", 2]],:selected=>"1") %>
+          <%= select_tag 'request', options_for_select([["前方一致", 1],["後方一致", 2], ["完全一致", 3], ["部分一致", 4]]) %>
           <%= submit_tag '検索', :name => nil %>
         <% end %>
       <% end %>
     </div>
     <!-- 検索フォームの記述 -->
-    
+
     <main>
       <div class="container">
         <!--デバイスでnotice設定されているので呼び出してるだけ-->
