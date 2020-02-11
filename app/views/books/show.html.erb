@@ -23,7 +23,9 @@
 					</td>
 					<td><%= link_to @book.title, @book %></td>
 					<td><%= @book.body %></td>
-					<td><%= render 'favorites/hart', book: @book %></td>
+					<td id="favorites-<%= @book.id %>">
+						<%= render 'favorites/hart', book: @book %>
+					</td>
 					<td>コメント数：<%= @book.book_comments.count %></td>
 
 					<% if @book.user == current_user %>
@@ -33,10 +35,12 @@
 
 				</tr>
 				<tr><!-- コメント一覧 -->
-					<td><%= render 'book_comments/index', book: @book %></td>
+					<td id="comments_area">
+						<%= render 'book_comments/index', book: @book %>
+					</td>
 				</tr>
 			</table>
 			<!-- コメント機能 -->
-			<%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
+				<%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
 	</div>
 </div>
