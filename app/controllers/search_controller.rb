@@ -3,7 +3,6 @@ class SearchController < ApplicationController
     @content = params["search"]["content"]
     @model = params["search"]["model"]
     @how = params["search"]["how"]
-
     @books = search_for(@how, @model, @content)
     @users = search_for(@how, @model, @content)
   end
