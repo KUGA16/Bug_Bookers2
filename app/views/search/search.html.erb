@@ -1,0 +1,12 @@
+
+<% if @model == "user" %>
+<!-- ユーザー検索結果 -->
+	<h1>Users Search Result</h1>
+	<%= render 'users_search', users: @users %>
+
+<% else %>
+<!-- 本 検索結果 -->
+	<h1>Books Search Result</h1>
+	<%= render 'books_search', books: @books %>
+
+<% end %>
