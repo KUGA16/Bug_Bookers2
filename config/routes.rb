@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'home#top'
   get 'home/about'
-  get 'search/index'
+  get 'search/search'
 
   devise_for :users
 
