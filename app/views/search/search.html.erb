@@ -2,11 +2,11 @@
 <% if @model == "user" %>
 <!-- ユーザー検索結果 -->
 	<h1>Users Search Result</h1>
-	<%= render 'users_search', users: @users %>
+	<%= render 'users_search', users: @records %>
 
-<% else %>
+<% else @model == 'book' %>
 <!-- 本 検索結果 -->
 	<h1>Books Search Result</h1>
-	<%= render 'books_search', books: @books %>
+	<%= render 'books_search', books: @records %>
 
 <% end %>
