@@ -6,4 +6,7 @@ class ChatChannel < ApplicationCable::Channel
   def unsubscribed #接続が解除されたとき
     # Any cleanup needed when channel is unsubscribed
   end
+
+  def speak
+  end
 end
