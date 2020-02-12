@@ -1,5 +1,8 @@
 class ChatsController < ApplicationController
   def show
-    @messages = Chat.all
+    @room = Room.find(params[:id])
+    @chats = @room.chats
   end
+
+
 end

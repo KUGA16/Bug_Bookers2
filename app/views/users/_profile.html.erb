@@ -44,7 +44,12 @@
 <!-- チャットルームへのボタン -->
 <div class="row text-center">
 <% if current_user != user %>
-	<%= link_to "チャットを始める", chat_path(user), class: "col-xs-12 btn btn-default" %>
+	<h2>トークルーム作成</h2>
+	<%= form_with model: @room do |f| %>
+		<%= f.label :name %>
+		<%= f.hidden_field :name, :value => user.name %>
+		<%= f.submit %>
+	<% end %>
 <% end %>
 </div>
 

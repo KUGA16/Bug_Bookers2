@@ -16,4 +16,5 @@ Rails.application.routes.draw do
     resource :book_comments, only: [:create,:destroy]
   end
   resources :chats, only: [:show,:create]
+  resources :rooms, only: [:create]
 end
