@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'chats/show'
   root 'home#top'
   get 'home/about'
   get 'search/search'
@@ -16,5 +15,5 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create,:destroy]
     resource :book_comments, only: [:create,:destroy]
   end
-
+  resources :chats, only: [:show,:create]
 end
