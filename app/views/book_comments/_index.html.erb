@@ -1,5 +1,5 @@
 <!-- コメント一覧 -->
-<% book.book_comments.each do |book_comment| %>
+<% book_comments.each do |book_comment| %>
   <span class="comment">
     <div class="comment-body bb">
       <div class="comment-avatar">
@@ -8,7 +8,7 @@
           <span class="comment-entry"><%= book_comment.comment %>
             <!-- ログインユーザー本人のコメントだったらdestroyボタンが出現 -->
             <% if book_comment.user == current_user %>
-              <%= link_to "Destroy",book_book_comments_path(book_comment), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+              <%= link_to "Destroy",book_book_comments_path(book_comment), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger", remote: true %>
             <% end %>
             <!-- ログインユーザー本人のコメントだったらdestroyボタンが出現 -->
           </span>
