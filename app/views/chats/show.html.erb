@@ -1,13 +1,18 @@
 
 <div class="container">
-  <h1>Chat room</h1>
-  <p><%= "ルーム名：#{@room.name}" %></p>
+  <div class="row">
+    <h1>Chat room</h1>
 
-  <input type="text" data-behavior="room_speaker" data-user="<%= current_user.id %>" data-room="<%= @room.id %>">
-
-  <div id="posts">
     <% @chats.each do |chat| %>
-      <p><%= chat.message %></p>
+      <p><%= chat.content %></p>
     <% end %>
+
+    <!-- ここにあたらしいメッセージを追加する -->
+      <div id="new_message">
+        <%= form_with(model: @chat) do |f| %>
+          <%= f.text_field :content %>
+          <%= f.submit %>
+        <% end %>
+      </div>
   </div>
 </div>

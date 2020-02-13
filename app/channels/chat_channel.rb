@@ -1,13 +1,14 @@
 class ChatChannel < ApplicationCable::Channel
+#バックエンド側
   def subscribed
     # stream_from "some_channel"
-    # 接続された時
+    # フロントとバックが接続された時
     stream_from "chat_channel"
   end
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
-    # 切断された時
+    # フロントとバックが切断された時
   end
 
   def speak(message)
