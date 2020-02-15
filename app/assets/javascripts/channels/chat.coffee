@@ -6,14 +6,14 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
+    $('#chats').append data['chat']
     # Called when there's incoming data on the websocket for this channel
-  $('#chats').append("<p>"+data["message"]+"</p>"); # 投稿を追加
 
-  speak: ->
-    @perform 'speak', message: message　
-
-jQuery(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
-  if event.keyCode is 13 # return キーのキーコードが13
-    App.room.speak [event.target.value, $('[data-user]').attr('data-user'), $('[data-room]').attr('data-room')] # speak メソッド, event.target.valueを引数に.
-    event.target.value = ''
-    event.preventDefault()
+  speak: (message) ->
+    @perform 'speak', message: message
+    jQuery(document).on 'keypress', '[data-behavior~=chat_speaker]', (event) ->
+      if event.keyCode is 13 # return キーのキーコードが13
+        App.chat.speak event.target.value # speak メソッド, event.target.valueを引数に.
+        event.target.value = ''
+        alert()
+        event.preventDefault()

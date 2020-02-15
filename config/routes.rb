@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   end
   resources :chats, only: [:show,:create]
   resources :rooms, only: [:create]
+
+  mount ActionCable.server => '/cable'
+  #フロントとバックを繋ぐルーティング
 end

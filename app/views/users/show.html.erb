@@ -3,7 +3,7 @@
 <div class="col-xs-3">
 
 <h2>User info</h2>
-<%= render 'users/profile', user: @user %>
+<%= render 'users/profile', user: @user, isRoom: @isRoom, roomId: @roomId, room: @room, user_rooms: @user_room %>
 <!--同コントローラーのviewで表示ならusersは省略可 -->
 
 <h2>New book</h2>

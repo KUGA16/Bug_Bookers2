@@ -8,8 +8,6 @@ class UsersController < ApplicationController
   	# @user = User.find(params[:id])
   	@books = @user.books
   	@book = Book.new #new bookの新規投稿で必要（保存処理はbookコントローラー側で実施）
-		@room = Room.new
-
   end
 
   def index
@@ -39,8 +37,6 @@ class UsersController < ApplicationController
 		# @user = User.find(params[:id])
 		@users = @user.followers
 	end
-
-
 
   private
 
